@@ -36,8 +36,9 @@ form {
 
 }
 
-.login button, .register button {
+/* .login button, .register button {
     background-color: indianred;
+    
     color: white;
     border: none;
     border-radius: 0.3em;
@@ -46,3 +47,6 @@ form {
     width: 30%;
     outline: none;
 }
+.register button:hover {
+    background: rgba(202, 25, 25, 0.787)
+  } */

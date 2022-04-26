@@ -1,20 +1,47 @@
 <div class="container mt-5">
-  <form class="login">
+  <form class="login" [formGroup]="loginFormGroup" (ngSubmit)="handleLogin()">
     <fieldset>
       <h2>Login form</h2>
 
+      <p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
+
       <div class="form-group mb-3">
         <label for="email">Email address</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email">
+        <input formControlName="email" type="email" class="form-control" name="email" id="email" placeholder="Enter email">
+        
+        <ng-container
+        *ngIf="loginFormGroup.controls['email'].touched && loginFormGroup.controls['email'].invalid">
+        <p *ngIf="loginFormGroup.controls['email'].errors?.['required']" class="error">
+          Email is required!
+        </p>
+
+      </ng-container>
+      
+      
       </div>
 
       <div class="form-group mb-3">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Password">
+        <input formControlName="password" type="password" class="form-control" name="password" id="password" placeholder="Password">
+      
+        <ng-container *ngIf="loginFormGroup.controls['password'].touched && loginFormGroup.controls['password'].invalid" >
+          <p *ngIf="loginFormGroup.controls['password'].errors?.['required']" class="error">
+            Password is required!
+          </p>
+          
+          <p *ngIf="loginFormGroup.controls['password'].errors?.['minlength']" class="error">
+            Password must be at least 5 characters!
+          </p>
+
+        </ng-container>
       </div>
 
-      <button type="submit" class="btn btn-primary">Create Account</button>
+      <button [disabled]="loginFormGroup.invalid" type="submit" class="btn btn-primary">Login</button>
 
+      <p class="text-center">
+        Have an account?
+        <a routerLink="/register">Register</a>
+    </p>
     </fieldset>
     </form>
 
