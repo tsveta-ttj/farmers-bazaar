@@ -3,19 +3,19 @@ import { IProduct } from 'src/app/core/interface';
 import { ProductService } from 'src/app/core/services/product.service';
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  selector: 'app-product-list',
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.css']
 })
-export class HomePageComponent implements OnInit {
-
+export class ProductListComponent implements OnInit {
+  
   productsList: IProduct[];
-
+  
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.productsList = this.productService.loadProductList();
 
+    this.productsList = this.productService.loadProductList();
   }
 
 }

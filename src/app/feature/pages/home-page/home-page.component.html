@@ -1,1 +1,25 @@
-<p>home-page works!</p>
+<section id="home">
+    <div class="home-container">
+
+        <div class="short-info">
+            <h1>The best place to share production</h1>
+            <h2>The best place to find local organic products</h2>
+        </div>
+
+    </div>
+</section>
+
+<section id="home-page">
+    <div class="row">
+        <div class="col-lg-3 mt-3" *ngFor="let product of productsList;index as i">
+            <div class="offers"*ngIf="i<=3">
+                <div class="col container">
+                    <img src="{{product.img}}" >
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>

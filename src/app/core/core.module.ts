@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
-import { UserService } from './user.service';
+import { UserService } from './services/user.service';
+import { ProductService } from './services/product.service';
 
 
 
@@ -18,7 +19,8 @@ import { UserService } from './user.service';
     HeaderComponent
   ],
   providers:[
-    UserService
+    UserService,
+    ProductService
   ]
 })
 export class CoreModule { }

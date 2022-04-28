@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <form class="create" #newThemeForm="ngForm" (ngSubmit)="submitNewProduct(newThemeForm)">
+        <fieldset>
+            <h2>Create Product</h2>
+
+            <div class="form-group mb-3">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" name="title" ngModel id="title" placeholder="">
+
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="description">Description</label>
+                <textarea type="text" class="form-control" name="description" ngModel id="description" placeholder=""></textarea>>
+
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" name="price" ngModel id="price" placeholder="">
+
+            </div>
+            
+            <div class="form-group mb-3">
+                <label for="img">Imgage</label>
+                <input type="text" class="form-control" name="img" ngModel id="img" placeholder="http:/...">
+
+            </div>
+
+            <button [disabled]="newThemeForm.invalid" type="submit" class="btn btn-primary">Create</button>
+
+
+        </fieldset>
+    </form>
+
+</div>
