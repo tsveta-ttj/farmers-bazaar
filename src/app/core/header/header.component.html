@@ -1,27 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
- 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/">HOME <span class="sr-only"></span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/catalog">ALL PRODUCTS</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/create">CREATE PRODUCT</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/login">LOGIN</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/register">REGISTER</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/logout">LOGOUT</a>
-      </li>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-    </ul>
-    
-  </div>
-</nav>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+        <li class="nav-item" *ngIf="(loginStatus$ | async) as loginStatus">
+          <a class="nav-link" *ngIf="(username$ | async) as username"> Welcome, {{username | uppercase}} ! </a>
+        </li>
+
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/">HOME <span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/catalog">ALL PRODUCTS</a>
+        </li>
+        <li class="nav-item" *ngIf="(loginStatus$ | async) as loginStatus">
+          <a class="nav-link" *ngIf="loginStatus" routerLink="/create">CREATE PRODUCT</a>
+        </li>
+
+        <li class="nav-item" *ngIf="!(loginStatus$ | async) as loginStatus">
+          <a class="nav-link" *ngIf="loginStatus" routerLink="/login">LOGIN</a>
+        </li>
+        <li class="nav-item" *ngIf="!(loginStatus$ | async) as loginStatus">
+          <a class="nav-link" *ngIf="loginStatus" routerLink="/register">REGISTER</a>
+        </li>
+        <li class="nav-item" *ngIf="(loginStatus$ | async) as loginStatus">
+          <a class="btn" *ngIf="loginStatus" (click)="logoutHandler()">LOGOUT</a>
+        </li>
+
+      </ul>
+
+    </div>
+  </nav>
+</header>

@@ -4,5 +4,5 @@ export interface IUser {
     username: string;
     password: string;
     products:string[];
-    __v: string
+   
     }

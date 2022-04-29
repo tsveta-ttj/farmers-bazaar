@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/core/services/user.service';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService,
+    private authService: AuthService,
     private router: Router
 
   ) { }
@@ -30,16 +30,14 @@ export class LoginComponent implements OnInit {
 
   handleLogin(): void {
     this.errorMessage = '';
-    this.userService.login$(this.loginFormGroup.value).subscribe({
-      next: user => {
-        //TODO auth logic
-        console.log(user);
-        
+    this.authService.login$(this.loginFormGroup.value).subscribe({
+      next: () => {
+        this.loginFormGroup.reset();
+        this.router.navigate(['/home']);
       },
-      error: (err)=>{
+      error: (err) => {
         this.errorMessage = err.error.message
       }
     });
   }
-
 }

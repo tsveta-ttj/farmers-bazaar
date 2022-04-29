@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/core/services/user.service';
+import { AuthService } from 'src/app/auth.service';
 import { emailValidator, passwordMatch } from '../utils';
 
 @Component({
@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService,
+    private authService: AuthService,
     private router: Router
   ) { }
 
@@ -40,25 +40,23 @@ export class RegisterComponent implements OnInit {
   handleRegister(): void {
     this.errorMessage = '';
 
-
     const body = {
       email: this.registerFormGroup.value.email,
       username: this.registerFormGroup.value.username,
       password: this.registerFormGroup.value.passwords.password
     }
 
-    this.userService.register$(body).subscribe({
-      next: user => {
-        //TODO auth logic
-        console.log(user);
+    this.authService.register$(body).subscribe({
+      next: () => {
+        this.registerFormGroup.reset();
         this.router.navigate(['/home']);
-
       },
       error: (err) => {
-        this.errorMessage = err.error.message
+        this.errorMessage = err.error.message;
+        console.log(this.errorMessage);
+        
+        
       }
     });
-
   }
-
 }

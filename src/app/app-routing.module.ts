@@ -1,6 +1,8 @@
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/guards/auth.guard';
 import { CatalogPageComponent } from './feature/pages/catalog-page/catalog-page.component';
 import { CreateProductPageComponent } from './feature/pages/create-product-page/create-product-page.component';
+import { DetailsPageComponent } from './feature/pages/details-page/details-page.component';
 import { HomePageComponent } from './feature/pages/home-page/home-page.component';
 
 const routes: Routes = [
@@ -19,7 +21,12 @@ const routes: Routes = [
     },
     {
         path: 'create',
+        canActivate: [AuthGuard],
         component: CreateProductPageComponent
+    },
+    {
+        path: 'catalog/:id',
+        component: DetailsPageComponent
     },
     
 

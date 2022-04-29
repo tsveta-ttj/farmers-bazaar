@@ -7,6 +7,6 @@ export interface IProduct {
     description: string;
     price: number;
     img:string;
-    owner: string
-    //TODO add IUser to owner when service is done
+    owner: IUser
+    
 }

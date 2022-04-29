@@ -5,9 +5,9 @@
                 <img src="{{product.img}}">
                 <h1>{{product.title}}</h1>
                 <p>{{product.description}}</p>
-                <p>{{product.price| currency:''}}</p>
+                <p>{{product.price}} EUR</p>
                 <br />
-                <a [routerLink]="['/catalog', product._id]">Details<i class="bi bi-bag"></i></a>
+                <button class="btn btn-md btn-dark mt-3" [routerLink]="['/catalog', product._id]" >Details</button>
             </div>
         </div>
     </div>

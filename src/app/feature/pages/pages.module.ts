@@ -5,6 +5,8 @@ import { ProductsModule } from '../products/products.module';
 import { CatalogPageComponent } from './catalog-page/catalog-page.component';
 import { CreateProductPageComponent } from './create-product-page/create-product-page.component';
 import { FormsModule } from '@angular/forms';
+import { DetailsPageComponent } from './details-page/details-page.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -12,12 +14,14 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     HomePageComponent,
     CatalogPageComponent,
-    CreateProductPageComponent
+    CreateProductPageComponent,
+    DetailsPageComponent
   ],
   imports: [
     CommonModule,
     ProductsModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   exports: [
     
